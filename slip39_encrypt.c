@@ -4,10 +4,10 @@
 // encrypt/decrypt
 //
 
-#include <openssl/evp.h>
-#include <openssl/sha.h>
+// #include <openssl/evp.h>
+// #include <openssl/sha.h>
 // crypto.h used for the version
-#include <openssl/crypto.h>
+// #include <openssl/crypto.h>
 
 static const uint8_t customization[] = {
     's', 'h', 'a', 'm', 'i', 'r',

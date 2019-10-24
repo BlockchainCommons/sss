@@ -4,8 +4,8 @@
 //////////////////////////////////////////////////
 // hmac sha256
 //
-#include <openssl/evp.h>
-#include <openssl/hmac.h>
+// #include <openssl/evp.h>
+// #include <openssl/hmac.h>
 
 uint8_t * hmac_sha256(
     const uint8_t *key,
