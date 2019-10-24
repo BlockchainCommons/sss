@@ -1,54 +1,55 @@
-# Prerequisites
-*.d
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
 
-# Linker output
-*.ilk
-*.map
-*.exp
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+
+
 
 # Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
+# Executables
 # Kernel Module Compile Results
-*.mod*
+# Libraries
+# Linker output
+# Object files
+# Precompiled Headers
+# Prerequisites
+# Shared objects (inc. Windows DLLs)
+*.a
+*.app
 *.cmd
+*.d
+*.dSYM/
+*.dll
+*.dylib
+*.elf
+*.exe
+*.exp
+*.gch
+*.hex
+*.i*86
+*.idb
+*.ilk
+*.ko
+*.la
+*.lib
+*.lo
+*.map
+*.mod*
+*.o
+*.obj
+*.out
+*.pch
+*.pdb
+*.so
+*.so.*
+*.su
+*.x86_64
 .tmp_versions/
-modules.order
-Module.symvers
+/slip39_tests.c
 Mkfile.old
+Module.symvers
 dkms.conf
-
+modules.order
 slip39/slip39

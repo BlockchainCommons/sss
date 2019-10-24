@@ -40,7 +40,7 @@ slip39_tests.o: slip39_tests.c
 
 slip39_tests.out: slip39_tests.o hazmat.o slip39_wordlist.o slip39_rs1024.o \
      slip39_shamir.o slip39_mnemonics.o test_random.o slip39_encrypt.o \
-     randombytes/librandombytes.a
+     randombytes/librandombytes.a hmac.o memzero.o pbkdf2.o sha2.o
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^
 	$(MEMCHECK) ./$@
 
@@ -71,13 +71,13 @@ test_slip39_shamir.o: test_slip39_shamir.c slip39.h
 
 slip39_shamir.o: slip39_shamir.c slip39.h
 
-test_slip39_shamir.out: test_slip39_shamir.o slip39_shamir.o hazmat.o test_random.o
+test_slip39_shamir.out: test_slip39_shamir.o slip39_shamir.o hazmat.o test_random.o hmac.o memzero.o pbkdf2.o sha2.o
 	gcc $^ -o $@
 	./$@
 
 slip39_encrypt.o: slip39_encrypt.c slip39.h
 
-test_slip39_encrypt.out: test_slip39_encrypt.o slip39_encrypt.o randombytes/librandombytes.a
+test_slip39_encrypt.out: test_slip39_encrypt.o slip39_encrypt.o randombytes/librandombytes.a hmac.o memzero.o pbkdf2.o sha2.o
 	gcc $^ -o $@
 	./$@
 
@@ -85,7 +85,7 @@ test_slip39_encrypt.out: test_slip39_encrypt.o slip39_encrypt.o randombytes/libr
 test_generate_combine.o: test_generate_combine.c
 
 test_generate_combine.out: test_generate_combine.o hazmat.o slip39_wordlist.o \
-     slip39_rs1024.o slip39_shamir.o slip39_mnemonics.o slip39_encrypt.o randombytes/librandombytes.a
+     slip39_rs1024.o slip39_shamir.o slip39_mnemonics.o slip39_encrypt.o randombytes/librandombytes.a hmac.o memzero.o pbkdf2.o sha2.o
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS)
 	$(MEMCHECK) ./$@
 

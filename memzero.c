@@ -1,3 +1,5 @@
+#include "memzero.h"
+
 #ifndef __STDC_WANT_LIB_EXT1__
 #define __STDC_WANT_LIB_EXT1__ 1  // C11's bounds-checking interface.
 #endif
@@ -52,7 +54,7 @@ void memzero(void *const pnt, const size_t len) {
 #elif defined(HAVE_MEMSET_S)
   memset_s(pnt, (rsize_t)len, 0, (rsize_t)len);
 #elif defined(HAVE_EXPLICIT_BZERO)
-  explicit_bzero(pnt, len);
+  bzero(pnt, len);
 #elif defined(HAVE_EXPLICIT_MEMSET)
   explicit_memset(pnt, 0, len);
 #else
