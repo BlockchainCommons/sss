@@ -8,10 +8,16 @@ SRCS = hazmat.c randombytes.c sss.c tweetnacl.c \
 	hmac.c memzero.c pbkdf2.c sha2.c
 OBJS := ${SRCS:.c=.o}
 
+ifeq ($(shell uname -o), GNU/Linux)
+LINK := $(AR) -rcs
+else
+LINK := $(which libtool) -static -a -o
+endif
+
 all: libsss.a libslip39.a
 
 libsss.a: randombytes/librandombytes.a $(OBJS)
-	$(AR) -rcs libsss.a $^
+	$(LINK) libsss.a $^
 
 randombytes/librandombytes.a:
 	$(MAKE) -C randombytes librandombytes.a
@@ -31,7 +37,7 @@ libslip39.so: libslip39.a
 	$(CC) -shared $(CFLAGS) $^ -o $@
 
 libslip39.a: randombytes/librandombytes.a $(OBJS)
-	$(AR) -rcs $@ $^
+	$(LINK) $@ $^
 
 slip39_tests.c: vectors_to_tests.js vectors.json
 	node vectors_to_tests.js > slip39_tests.c
