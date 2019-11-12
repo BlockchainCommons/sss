@@ -1,22 +1,10 @@
 #include "slip39.h"
 #include "hazmat.h"
 
+#include "hmac.h"
+
 //////////////////////////////////////////////////
 // hmac sha256
-//
-#include <openssl/evp.h>
-#include <openssl/hmac.h>
-
-uint8_t * hmac_sha256(
-    const uint8_t *key,
-    uint32_t keylen,
-    const uint8_t *data,
-    uint32_t datalen,
-    uint8_t *result,
-    unsigned int* resultlen
-) {
-    return (uint8_t *) HMAC(EVP_sha256(), key, keylen, data, datalen, result, resultlen);
-}
 
 uint8_t * create_digest(
     const uint8_t *random_data,
@@ -26,9 +14,8 @@ uint8_t * create_digest(
     uint8_t *result
 ) {
     uint8_t buf[32];
-    unsigned int l = 32;
 
-    hmac_sha256(random_data, rdlen, shared_secret, sslen, buf, &l);
+    hmac_sha256(random_data, rdlen, shared_secret, sslen, buf);
 
     for(uint8_t j=0; j<4; ++j) {
         result[j] = buf[j];

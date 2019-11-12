@@ -1,13 +1,14 @@
 #include "slip39.h"
+#include "pbkdf2.h"
 
 //////////////////////////////////////////////////
 // encrypt/decrypt
 //
 
-#include <openssl/evp.h>
-#include <openssl/sha.h>
+// #include <openssl/evp.h>
+// #include <openssl/sha.h>
 // crypto.h used for the version
-#include <openssl/crypto.h>
+// #include <openssl/crypto.h>
 
 static const uint8_t customization[] = {
     's', 'h', 'a', 'm', 'i', 'r',
@@ -56,11 +57,10 @@ void round_function(
     memcpy(saltr, salt, salt_length);
     memcpy(saltr+salt_length, r, r_length);
 
-    PKCS5_PBKDF2_HMAC((char *)pass, pass_length,
-        saltr, salt_length+r_length,
-        iterations,
-        EVP_sha256(),
-        dest_length, dest);
+    pbkdf2_hmac_sha256(pass, pass_length,
+                       saltr, salt_length+r_length,
+                       iterations,
+                       dest, dest_length);
 }
 
 void feistel(

@@ -166,27 +166,6 @@ int32_t from_words(
 int randombytes(void *buf, size_t n);
 
 /**
- * creates an hmac from the data, storing it in the result field
- * the number of bytes written is stored in the resultlen pointer
- *
- * returns a pointer to the result buffer
- *
- * inputs: key: bytes representing the key
- *         keylen: length of the key byte array
- *         data: bytes to hmac
- *         datalen: length of the data array
- *         result: place for results
- *         resultlen: maximum number of bytes to write to result
- */
-uint8_t * hmac_sha256(
-	const uint8_t *key,
-	uint32_t keylen,
-	const uint8_t *data,
-	uint32_t datalen,
-    uint8_t *result,
-    unsigned int *resultlen);
-
-/**
  * creates a digest used to help valididate secret reconstruction (see slip-39 docs)
  *
  * returns: a pointer to the resulting 4-byte digest
