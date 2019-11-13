@@ -8,10 +8,10 @@ SRCS = hazmat.c randombytes.c sss.c tweetnacl.c \
 	hmac.c memzero.c pbkdf2.c sha2.c
 OBJS := ${SRCS:.c=.o}
 
-ifeq ($(shell uname -o), GNU/Linux)
-LINK := $(AR) -rcs
+ifeq ($(shell uname -s), Darwin)
+LINK := $(shell which libtool) -static -a -o
 else
-LINK := $(which libtool) -static -a -o
+LINK := $(AR) -rcs
 endif
 
 all: libsss.a libslip39.a
