@@ -52,4 +52,4 @@ Mkfile.old
 Module.symvers
 dkms.conf
 modules.order
-slip39/slip39
+slip39
