@@ -20,7 +20,7 @@ libsss.a: randombytes/librandombytes.a $(OBJS)
 	$(LINK) libsss.a $^
 
 randombytes/librandombytes.a:
-	if [ ! -f randombytes/Makefile ]; then \
+	@if [ ! -f randombytes/Makefile ]; then \
 		echo "Missing randombytes, use git clone --recursive" >&2 ; \
 		exit 1 ; \
 	fi
