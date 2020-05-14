@@ -2,6 +2,14 @@
 
 [![Build Status](https://travis-ci.org/dsprenkels/sss.svg?branch=master)](https://travis-ci.org/dsprenkels/sss)
 
+_This repo contains a third-party module that has been cloned to the BlockchainCommons repo for ease of installation or compilation of our own projects. The module remains under its original ownership and licensing requirements, and all changes made to this repo fall under that original license._ 
+
+**Original Source:** [dsprenkels sss repo](https://github.com/dsprenkels/sss).
+
+**Additional Notes:** This repo has since been superceded by the [Blockchain Commons Shamir Secret Sharing](https://github.com/BlockchainCommons/bc-shamir) library.
+
+<hr>
+
 `sss` is a library that exposes an API to split secret data buffers into
 a number of different _shares_. With the possession of some or all of these
 shares, the original secret can be restored. It is the schoolbook example of
